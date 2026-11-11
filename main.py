@@ -9,9 +9,6 @@ def main():
     dt = 0.0
     x = SCREEN_WIDTH/2
     y = SCREEN_HEIGHT/2
-    updatable = pygame.sprite.Group()
-    drawable = pygame.sprite.Group()
-    Player.containers = (updatable, drawable)
     player = Player(200, 200)
     i = 0 
     while True:
@@ -20,10 +17,8 @@ def main():
                 sys.exit()
                 return
         screen.fill("blue")
-        #for item in drawable:
-        for item in drawable:
-            item.draw(screen)
-        updatable.update()
+        player.draw(screen)
+        player.update()
         i+=1
         print(i)
         pygame.display.flip()
