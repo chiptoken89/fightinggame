@@ -13,12 +13,14 @@ def main():
     i = 0 
     while True:
         for event in pygame.event.get():
+            player.jump(event)
             if event.type == pygame.QUIT:
                 sys.exit()
                 return
         screen.fill("blue")
         player.draw(screen)
-        player.update()
+        player.move()
+        
         i+=1
         print(i)
         pygame.display.flip()
