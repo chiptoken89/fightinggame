@@ -9,21 +9,23 @@ def main():
     dt = 0.0
     x = SCREEN_WIDTH/2
     y = SCREEN_HEIGHT/2
-    player = Player(200, 200)
-    i = 0 
-    while True:
-        for event in pygame.event.get():
-            player.jump(event)
+    player = Player(200, 500)
+    running = True
+    while running:
+        for event in pygame.event.get(): 
+            player.handle_jump(event)
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    running = False
             if event.type == pygame.QUIT:
-                sys.exit()
-                return
+                running = False
         screen.fill("blue")
         player.draw(screen)
-        player.move()
+        player.update()
         
-        i+=1
-        print(i)
+        
         pygame.display.flip()
         dt = clock.tick(60) / 1000
+    pygame.quit()
 if __name__ == "__main__":
     main()
